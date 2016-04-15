@@ -12,7 +12,7 @@ os.makedirs('withLogo', exist_ok=True)
 
 for filename in IMG_FILEPATH:
     if not (filename.endswith('.png') or filename.endswith('.jpg')) \
-        or filename == LOGO_FILENAME:
+            or filename == LOGO_FILENAME:
         continue # skip non-image files and the logo file itself
 
     print("opening " + filename)
@@ -36,7 +36,7 @@ for filename in IMG_FILEPATH:
     print('Adding logo to %s...' % (filename))
     origIm.paste(logoIm, (width - logoWidth, height - logoHeight), logoIm)
     # Save changes.
-    origIm.save(os.path.join('.','withLogo', filename))
+    origIm.save(os.path.join('withLogo', filename))
 
 #TODO: Loop over all files in the working directory
 #TODO: Check if file image needs to be
