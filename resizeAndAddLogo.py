@@ -3,24 +3,24 @@ from PIL import Image
 
 SQUARE_FIT_SIZE = 300
 LOGO_FILENAME = 'logo.png'
-IMG_FILEPATH = os.listdir('./originals')
+LIST_IMG_FOLDER = os.listdir('originals')
 
 logoIm = Image.open( LOGO_FILENAME )
 logoWidth, logoHeight = logoIm.size
 
 os.makedirs('withLogo', exist_ok=True)
 
-for filename in IMG_FILEPATH:
+for filename in LIST_IMG_FOLDER:
     if not (filename.endswith('.png') or filename.endswith('.jpg')) \
             or filename == LOGO_FILENAME:
         continue # skip non-image files and the logo file itself
 
     print("opening " + filename)
-    origIm = Image.open('./originals/' + filename)
+    origIm = Image.open(os.path.join('originals', filename))
     width, height = origIm.size
 
     if width > SQUARE_FIT_SIZE and height > SQUARE_FIT_SIZE:
-          # Calculate the new width and height to resize to.
+      # Calculate the new width and height to resize to.
       if width > height:
         height = int((SQUARE_FIT_SIZE / width) * height)
         width = SQUARE_FIT_SIZE
